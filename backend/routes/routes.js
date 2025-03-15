@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { login, register } from "../controller/controller.js";
+import { login, register, territories } from "../controller/controller.js";
 
 const router = Router();
 
@@ -15,7 +15,7 @@ router.post("/app/register", register, (req, res) => {
   res.send("register");
 });
 
-router.post("/app/territories", (req, res) => {
+router.get("/app/territories", territories, (req, res) => {
   res.send("territories");
 });
 

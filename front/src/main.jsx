@@ -4,6 +4,7 @@ import './index.css'
 import {HomePage} from './HomePage.jsx'
 import {Login} from './Login.jsx'
 import {Register} from './register.jsx'
+import {Territories} from './territories.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/territories",
+    element: <Territories />,    
   }
 ])
 

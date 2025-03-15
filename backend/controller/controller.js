@@ -55,6 +55,18 @@ export const register = async (req, res) => {
 
 export const territories = async (req, res) => {
     try {
+        const token = req.cookies.token;
+
+        if (!token) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
+
+        jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+            if (err) {
+                return res.status(401).json({ message: "Unauthorized" });
+            }
+        });
+
         const query = await pool.query("SELECT * FROM territories");
         res.status(200).json(query.rows);
     } catch (error) {
