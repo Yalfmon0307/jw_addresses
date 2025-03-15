@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 
 export const Territories = () => {
     const [territories, setTerritories] = useState([]);
     const [message, setMessage] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchTerritories = async () => {
@@ -24,7 +26,8 @@ export const Territories = () => {
     }, []);
 
     const handleClick = (territoryNumber) => {
-        console.log(`Selected Territory Number: ${territoryNumber}`); // Puedes hacer lo que necesites con este número
+        console.log(`Selected Territory Number: ${territoryNumber}`); 
+        navigate(`/home/${encodeURIComponent(territoryNumber)}`);
     };
 
     return (

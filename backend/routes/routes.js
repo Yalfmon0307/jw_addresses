@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { login, register, territories } from "../controller/controller.js";
+import { login, register, territories, gethome } from "../controller/controller.js";
 
 const router = Router();
 
@@ -19,7 +19,7 @@ router.get("/app/territories", territories, (req, res) => {
   res.send("territories");
 });
 
-router.post("/app/address", (req, res) => {
+router.get("/app/home/:territory_number", gethome, (req, res) => {
   res.send("address");
 });
 

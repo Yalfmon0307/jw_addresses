@@ -5,6 +5,7 @@ import {HomePage} from './HomePage.jsx'
 import {Login} from './Login.jsx'
 import {Register} from './register.jsx'
 import {Territories} from './territories.jsx'
+import { HomeInfo } from './homeInfo.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -23,7 +24,12 @@ const router = createBrowserRouter([
   {
     path: "/territories",
     element: <Territories />,    
+  },
+  {
+    path: "/home/:territory_number",
+    element: <HomeInfo />,
   }
+  
 ])
 
 createRoot(document.getElementById('root')).render(

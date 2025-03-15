@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
     const { register, handleSubmit, reset } = useForm();
     const [message, setMessage] = useState("");
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
+
         const response = await fetch("http://localhost:3000/app/login", {
             method: "POST",
             headers: {
@@ -15,11 +18,13 @@ export const Login = () => {
             credentials: "include", // Para enviar cookies
         });
 
+
+
         const result = await response.json();
 
-        if (response.message === "Login successful") {
+        if ( response.ok ) {
             setMessage(result.message);
-            // Aquí puedes redirigir o realizar otra acción
+            navigate("/territories");
         } else {
             setMessage(result.message);
             reset();

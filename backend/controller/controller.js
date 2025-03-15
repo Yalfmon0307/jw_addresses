@@ -75,3 +75,16 @@ export const territories = async (req, res) => {
     }
 }
 
+export const gethome = async (req, res) => {
+    try {
+        const territory_number = req.params.territory_number;
+        if (typeof territory_number !== "string") {
+            return res.status(400).json({ message: "Invalid territory number" });
+        }
+        const query = await pool.query("SELECT * FROM home WHERE territory_number = $1", [territory_number]);
+        return res.status(200).json(query.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
