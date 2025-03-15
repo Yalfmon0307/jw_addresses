@@ -48,3 +48,14 @@ export const register = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 }
+
+export const territories = async (req, res) => {
+    try {
+        const query = await pool.query("SELECT * FROM territories");
+        res.status(200).json(query.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+
