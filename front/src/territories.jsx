@@ -19,6 +19,9 @@ export const Territories = () => {
             } else {
                 const result = await response.json();
                 setMessage(result.message);
+                if (result.message === "Unauthorized") {
+                    navigate("/login");
+                }
             }
         };
 

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 export const Register = () => {
     const { register, handleSubmit,reset } = useForm();
     const [message, setMessage] = useState("");
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         const response = await fetch("http://localhost:3000/app/register", {
@@ -16,8 +18,11 @@ export const Register = () => {
 
         const result = await response.json();
 
-        if (response.message === "User registered successfully") {
+        if  ( response.ok ) {
             setMessage(result.message);
+            reset();
+            navigate("/login");
+
             // Aquí puedes redirigir o realizar otra acción
         } else {
             setMessage(result.message);

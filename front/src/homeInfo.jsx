@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const HomeInfo = () => {
     const { territory_number } = useParams();
     const [homes, setHomes] = useState([]);
     const [message, setMessage] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchHomes = async () => {
@@ -19,6 +22,9 @@ export const HomeInfo = () => {
             } else {
                 const result = await response.json();
                 setMessage(result.message);
+                if (result.message === "Unauthorized") {
+                    navigate("/login");
+                }
             }
         };
 
@@ -40,6 +46,7 @@ export const HomeInfo = () => {
                     </li>
                 ))}
             </ul>
+            <Link to="/territories">Back to Territories</Link>
         </div>
     );
 };

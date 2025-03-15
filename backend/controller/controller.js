@@ -77,6 +77,19 @@ export const territories = async (req, res) => {
 
 export const gethome = async (req, res) => {
     try {
+
+        const token = req.cookies.token;
+
+        if (!token) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
+
+        jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+            if (err) {
+                return res.status(401).json({ message: "Unauthorized" });
+            }
+        })
+
         const territory_number = req.params.territory_number;
         if (typeof territory_number !== "string") {
             return res.status(400).json({ message: "Invalid territory number" });

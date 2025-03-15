@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const Login = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -53,6 +54,7 @@ export const Login = () => {
                 </div>
                 <button type="submit">Login</button>
                 {message && <p>{message}</p>}
+                <p>si no tienes una cuenta puedes <Link to="/register">Register</Link> </p>
             </form>
         </div>
     );
