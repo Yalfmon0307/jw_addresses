@@ -68,7 +68,7 @@ export const territories = async (req, res) => {
         });
 
         const query = await pool.query("SELECT * FROM territories");
-        res.status(200).json(query.rows);
+       return res.status(200).json(query.rows);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal server error" });
