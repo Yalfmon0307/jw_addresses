@@ -3,7 +3,7 @@ En esta api puedes crear datos de casas y su ping en google maps para hacer una 
 Esta pensada para trabajos como prestamistas o personas que abastecen distintos lugares y visitan muchas casas.
 
 ## instalacion
-1- crea una base de datos en posgre con nombre jw_addresses
+1- crea una base de datos en posgre con nombre jw_addresses 
 
 2- En la raiz crea un archivo .env con las variables:
 PORT=3000
